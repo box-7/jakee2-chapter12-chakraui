@@ -1,0 +1,67 @@
+{
+        "compilerOptions": {
+                "module": "ESNext",
+                "moduleResolution": "Bundler",
+                "skipLibCheck": true,
+                "paths": {
+                        "@/*": ["./src/*"]
+                },
+                "jsx": "react-jsx",
+                "lib": ["dom", "es2015"]
+        },
+        "include": [
+                "./src/**/*"
+        ]
+}
+
+
+// {
+//         "compilerOptions": {
+//           "module": "ESNext",
+//           "moduleResolution": "Bundler",
+//           "skipLibCheck": true,
+//           "paths": {
+//             "@/*": ["./src/*"]
+//           },
+//           "jsx": "react-jsx"  // JSXオプションを追加
+//         },
+//         "include": [
+//           "./src/**/*"
+//         ]
+//       }
+
+// {
+//         "compilerOptions": {
+//           "module": "ESNext",
+//           "moduleResolution": "Bundler",
+//           "skipLibCheck": true,
+//           "paths": {
+//             "@/*": ["./src/*"]
+//           }
+//         }
+//       }
+
+
+// {
+//         "compilerOptions": {
+//           "module": "ESNext",
+//           "moduleResolution": "Bundler",
+//           "skipLibCheck": true,
+//           "paths": {
+//             "@/*": ["./src/*"]
+//           },
+//           "jsx": "react-jsx",
+//           "allowImportingTsExtensions": true // これを追加
+//         },
+//         "include": [
+//           "./src/**/*"
+//         ]
+//       }
+
+// {
+//   "files": [],
+//   "references": [
+//     { "path": "./tsconfig.app.json" },
+//     { "path": "./tsconfig.node.json" }
+//   ]
+// }
