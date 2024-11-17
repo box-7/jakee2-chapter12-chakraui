@@ -1,9 +1,9 @@
-
 import {Button} from '@chakra-ui/react';
 
 const App = () => {
         return (
                 <>
+                        <p>app</p>
                         <Button variant="surface" colorPalette="teal">
                                 Auto Button
                         </Button>
