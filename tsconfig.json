@@ -1,5 +1,8 @@
 {
         "compilerOptions": {
+                // main.tsxでApp.jsをimportしてしまったため、importするファイルの拡張子を記載するようにする
+                "allowImportingTsExtensions": true,
+                "noEmit": true,
                 "module": "ESNext",
                 "moduleResolution": "Bundler",
                 "skipLibCheck": true,
