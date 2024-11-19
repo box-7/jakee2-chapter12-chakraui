@@ -6,9 +6,14 @@ import { Box } from "@chakra-ui/react"
 // mport { ChakraProvider, Box, ProgressRootProvider } from '@chakra-ui/react';
 // import system from "./theme/theme"; // 修正したテーマをインポート
 import { Theme } from "@chakra-ui/react"
-import { Router } from "./router/Router"
+import router from "./router/Router"
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+import {
+        createBrowserRouter,
+        RouterProvider,
+} from "react-router-dom";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
         <React.StrictMode>
                 <Provider>
                         <Box
@@ -20,12 +25,34 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                                 height="100vh"
                                 color="gray.800"
                         >
-                                {/* <App /> */}
-                                <Router />
+                                <RouterProvider router={router} />
                         </Box>
                 </Provider>
-        </React.StrictMode>,
-)
+        </React.StrictMode>
+);
+
+
+// ------------------------------------------------------------------------------------------------
+
+// ReactDOM.createRoot(document.getElementById("root")!).render(
+//         <React.StrictMode>
+//                 <Provider>
+//                         <Box
+//                                 bg="gray.100"
+//                                 position="absolute"
+//                                 top="0"
+//                                 left="0"
+//                                 width="100vw"
+//                                 height="100vh"
+//                                 color="gray.800"
+//                         >
+//                                 {/* <App /> */}
+//                                 <Router />
+
+//                         </Box>
+//                 </Provider>
+//         </React.StrictMode>,
+// )
 
 
 // ------------------------------------------------------------------------------------------------
