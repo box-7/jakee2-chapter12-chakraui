@@ -1,11 +1,10 @@
 import { memo } from 'react';
 import { Flex, Heading, Link, Box, IconButton, Button } from '@chakra-ui/react';
-// VoidFunctionComponentの略で、Reactの関数コンポーネントを定義するための型
 import { FaBars } from "react-icons/fa6";
 import { DrawerTrigger } from "@/components/ui/drawer"
 
 // VoidFunctionComponentの略で、Reactの関数コンポーネントを定義するための型
-export const MenuIconButton: React.FC = (() => {
+export const MenuIconButton: React.FC = memo(() => {
         return (
                 <>
                         <DrawerTrigger asChild> 
