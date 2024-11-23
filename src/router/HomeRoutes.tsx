@@ -5,7 +5,7 @@ import { Page404 } from "../components/pages/Page404";
 
 export const homeRoutes = [
         {
-                path: "/",
+                path: "/home",
                 children: <Home />
         },
         {

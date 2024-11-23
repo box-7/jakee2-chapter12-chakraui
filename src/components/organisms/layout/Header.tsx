@@ -1,8 +1,9 @@
 
-import { memo, useState } from 'react';
+import { memo, useState, useCallback } from 'react';
 import { Flex, Heading, Link, Box, IconButton, Button } from '@chakra-ui/react';
 // VoidFunctionComponentの略で、Reactの関数コンポーネントを定義するための型
 import { MenuIconButton } from "@/components/atoms/button/MenuIconButton.tsx";
+import { useNavigate } from 'react-router-dom';
 
 import {
         DrawerBackdrop,
@@ -16,6 +17,11 @@ import {
 
 export const Header: React.FC = memo(() => {
         const [open, setOpen] = useState(false)
+        const navigate = useNavigate();
+        const onClickHome = useCallback(() => navigate("/home"), []);
+        const onClickUserManagement = useCallback(() => navigate("/user_management"), []);
+        const onClickSetting = useCallback(() => navigate("/setting"), []);
+
         return (
                 <>
                         <Flex
@@ -28,7 +34,7 @@ export const Header: React.FC = memo(() => {
                                 // base:スマホ  md:タブレット以上
                                 padding={{ base: 3, md: 5 }}
                         >
-                                <Flex align="center" as="a" mr={8} _hover={{ cursor: "pointer" }}> {/* mrはmargin-right */}
+                                <Flex align="center" as="a" mr={8} _hover={{ cursor: "pointer" }} onClick={onClickHome} > {/* mrはmargin-right */}
                                         <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>
                                                 ユーザー管理アプリ
                                         </Heading>
@@ -40,9 +46,9 @@ export const Header: React.FC = memo(() => {
                                         display={{ base: "none", md: "flex" }} // base:スマホ  md:タブレット以上
                                 >
                                         <Box pr={4}> {/* prはpadding-right */}
-                                                <Link>ユーザー一覧</Link>
+                                                <Link onClick={onClickUserManagement} >ユーザー一覧</Link>
                                         </Box>
-                                        <Link>設定</Link>
+                                        <Link onClick={onClickSetting}>設定</Link>
                                 </Flex>
                                 <DrawerRoot placement={"start"} open={open} onOpenChange={(e) => setOpen(e.open)}>
                                         <DrawerBackdrop />
@@ -51,9 +57,9 @@ export const Header: React.FC = memo(() => {
                                         </DrawerTrigger>
                                         <DrawerContent>
                                                 <DrawerBody p={0} bg="gray.100">
-                                                        <Button w="100%" variant="outline">Top</Button>
-                                                        <Button w="100%" variant="outline">ユーザー一覧</Button>
-                                                        <Button w="100%" variant="outline">設定</Button>
+                                                        <Button w="100%" variant="outline" onClick={onClickHome} >Top</Button>
+                                                        <Button w="100%" variant="outline" onClick={onClickUserManagement}>ユーザー一覧</Button>
+                                                        <Button w="100%" variant="outline" onClick={onClickSetting}>設定</Button>
                                                 </DrawerBody>
                                                 <DrawerCloseTrigger />
                                         </DrawerContent>
