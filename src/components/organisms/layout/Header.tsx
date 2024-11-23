@@ -1,23 +1,21 @@
 
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { Flex, Heading, Link, Box, IconButton, Button } from '@chakra-ui/react';
 // VoidFunctionComponentの略で、Reactの関数コンポーネントを定義するための型
-import { FaBars } from "react-icons/fa6";
+import { MenuIconButton } from "@/components/atoms/button/MenuIconButton.tsx";
 
 import {
-        DrawerActionTrigger,
         DrawerBackdrop,
         DrawerBody,
         DrawerCloseTrigger,
         DrawerContent,
-        DrawerFooter,
-        DrawerHeader,
         DrawerRoot,
         DrawerTitle,
         DrawerTrigger,
 } from "@/components/ui/drawer"
 
 export const Header: React.FC = memo(() => {
+        const [open, setOpen] = useState(false)
         return (
                 <>
                         <Flex
@@ -46,36 +44,17 @@ export const Header: React.FC = memo(() => {
                                         </Box>
                                         <Link>設定</Link>
                                 </Flex>
-                                <DrawerRoot placement={"start"} >
+                                <DrawerRoot placement={"start"} open={open} onOpenChange={(e) => setOpen(e.open)}>
                                         <DrawerBackdrop />
                                         <DrawerTrigger asChild>
-                                                <IconButton
-                                                        align="right"
-                                                        aria-label="メニューボタン"
-                                                        size="sm"
-                                                        // backgroundColor: "transparent",
-                                                        variant="unstyled"
-                                                        colorPalette={"teal"}
-                                                        display={{ base: "block", md: "none" }}
-                                                >
-                                                        <FaBars />
-                                                </IconButton>
+                                                <MenuIconButton />
                                         </DrawerTrigger>
                                         <DrawerContent>
-                                                <DrawerHeader>
-                                                        <DrawerTitle>Drawer Title</DrawerTitle>
-                                                </DrawerHeader>
                                                 <DrawerBody p={0} bg="gray.100">
                                                         <Button w="100%" variant="outline">Top</Button>
                                                         <Button w="100%" variant="outline">ユーザー一覧</Button>
                                                         <Button w="100%" variant="outline">設定</Button>
                                                 </DrawerBody>
-                                                {/* <DrawerFooter>
-                                                        <DrawerActionTrigger asChild>
-                                                                <Button variant="outline">Cancel</Button>
-                                                        </DrawerActionTrigger>
-                                                        <Button>Save</Button>
-                                                </DrawerFooter> */}
                                                 <DrawerCloseTrigger />
                                         </DrawerContent>
                                 </DrawerRoot>
@@ -87,3 +66,46 @@ export const Header: React.FC = memo(() => {
 
 // Icon Button
 // https://www.chakra-ui.com/docs/components/icon-button
+
+
+
+
+// import {
+//         DrawerActionTrigger,
+//         DrawerBackdrop,
+//         DrawerBody,
+//         DrawerCloseTrigger,
+//         DrawerContent,
+//         DrawerFooter,
+//         DrawerHeader,
+//         DrawerRoot,
+//         DrawerTitle,
+//         DrawerTrigger,
+// } from "@/components/ui/drawer"
+
+// export const Header: React.FC = memo(() => {
+//         const [open, setOpen] = useState(false)
+//         return (
+//                 <>
+//                         <DrawerRoot placement={"start"} open={open} onOpenChange={(e) => setOpen(e.open)}>
+//                                 {/* <DrawerBackdrop /> */}
+//                                 {/* 移動 <DrawerTrigger asChild> */}
+//                                         <MenuIconButton />
+//                                 {/* 移動 </DrawerTrigger> */}
+//                                 <DrawerContent>
+//                                         <DrawerHeader>
+//                                                 <DrawerTitle>Drawer Title</DrawerTitle>
+//                                         </DrawerHeader>
+//                                         <DrawerBody p={0} bg="gray.100">
+//                                                 <Button w="100%" variant="outline">Top</Button>
+//                                                 <Button w="100%" variant="outline">ユーザー一覧</Button>
+//                                                 <Button w="100%" variant="outline">設定</Button>
+//                                         </DrawerBody>
+//                                         <DrawerCloseTrigger />
+//                                 </DrawerContent>
+//                         </DrawerRoot>
+//         </>
+
+//         )
+// });
+
