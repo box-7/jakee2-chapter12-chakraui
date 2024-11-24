@@ -1,15 +1,15 @@
 import { Provider } from "@/components/ui/provider"
 import { Box } from "@chakra-ui/react"
 
-import { Theme } from "@chakra-ui/react"
 import { Router } from "./router/Router"
 import { RouterProvider } from "react-router-dom";
-
+import { Toaster } from "@/components/ui/toaster"
 // 単一の主要なエクスポートがある場合はexport defaultを使う → import {} 不要
 // 複数のエクスポートがある場合はexportを使う→ import {} 必要
 
-import { ChakraProvider } from "@chakra-ui/react";
-import theme from "./theme/theme";
+// import { ChakraProvider } from "@chakra-ui/react";
+// import { Theme } from "@chakra-ui/react"
+// import theme from "./theme/theme";
 
 const App = () => {
         return (
@@ -24,9 +24,12 @@ const App = () => {
                                         height="100vh"
                                         color="gray.400"
                                 >
+                                        {/* Toasterを設置 */}
+                                        <Toaster />
                                         <RouterProvider router={Router} />
                                 </Box>
                         </Provider>
+
                 </>
         )
 };

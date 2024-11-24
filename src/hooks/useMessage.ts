@@ -1,37 +1,39 @@
-import { useCallback } from 'react';
-// import { toaster } from "@/components/ui/toaster"
-import { Toaster, toaster } from "@/components/ui/toaster"
+// 使わない
 
-type Props = {
-        title: string;
-        status: "info" | "warning" | "success" | "error";
-};
+// import { useCallback } from 'react';
+// // import { toaster } from "@/components/ui/toaster"
+// import { Toaster, toaster } from "@/components/ui/toaster"
 
-export const useMessage = () => {
-
-        const showMessage = useCallback((props: Props) => {
-                const { title, status } = props;
-                // const showToast = (title, status) => {
-                //         console.log("toaster")
-                //         toaster.create({
-                //                 description: title,
-                //                 type: status,
-                //         });
-                // };
-
-        }, []); // `useCallback` で関数をメモ化
-
-//         return { 
-//                 <Toaster />
-//                 showMessage
-//         };
+// type Props = {
+//         title: string;
+//         status: "info" | "warning" | "success" | "error";
 // };
 
-        return (
-                // <Toaster />
-                {showMessage}
-        )
-};
+// export const useMessage = () => {
+
+//         const showMessage = useCallback((props: Props) => {
+//                 const { title, status } = props;
+//                 // const showToast = (title, status) => {
+//                 //         console.log("toaster")
+//                 //         toaster.create({
+//                 //                 description: title,
+//                 //                 type: status,
+//                 //         });
+//                 // };
+
+//         }, []); // `useCallback` で関数をメモ化
+
+// //         return { 
+// //                 <Toaster />
+// //                 showMessage
+// //         };
+// // };
+
+//         return (
+//                 // <Toaster />
+//                 {showMessage}
+//         )
+// };
 
 
 

@@ -21,35 +21,12 @@ export const Login: React.FC = memo(() => {
                                         <PrimaryButton
                                                 disabled={userId === ""}
                                                 loading={loading}
-                                                // onClick={onClickLogin}
-                                                // showToast={showToast}
                                                 onClick={() => {
-                                                        onClickLogin(); // ()をつけなければ、アラートがヒョじされる
-                                                        toaster.create({
-                                                                description: "File saved successfully1",
-                                                                type: "info",
-                                                                duration: 5000,
-                                                        });
+                                                        onClickLogin(); // ()をつけなければ、アラートが表示される
                                                 }}
                                         >
                                                         ログイン
                                         </PrimaryButton>
-
-                                        <PrimaryButton 
-                                                disabled={userId === ""} 
-                                                loading={loading} 
-                                                onClick={() => {
-                                                        onClickLogin; // ()をつけなければ、アラートがヒョじされる
-                                                        toaster.create({
-                                                                description: "File saved successfully2",
-                                                                type: "info",
-                                                                duration: 5000,
-                                                        });
-                                                }}
-                                        >
-                                                ログイン2
-                                        </PrimaryButton>
-
                                 </Stack>
                         </Box>
                 </Flex>
@@ -64,6 +41,5 @@ export const Login: React.FC = memo(() => {
 //         <Box as="hr" border="1px solid" borderColor="gray.200" my="4" />
 // );
 
-{/* <Divider /> */}
 
 
