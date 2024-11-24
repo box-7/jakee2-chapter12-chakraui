@@ -7,9 +7,9 @@ type Props = {
         disabled?: boolean;
         loading?: boolean;
         onClick: () => void;
+        // showToast: (title: any, status: any) => void;
 };
 
-// VoidFunctionComponentの略で、Reactの関数コンポーネントを定義するための型
 export const PrimaryButton: React.FC<Props> = memo((props) => {
         const { children, disabled = false, loading= false, onClick } = props;
         return (

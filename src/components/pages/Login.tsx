@@ -2,10 +2,10 @@ import { ChangeEvent, memo, useState } from 'react';
 import { Box, Flex, Heading, Input, Stack, Separator } from '@chakra-ui/react';
 import { PrimaryButton } from '../atoms/button/PrimaryButton';
 import { useAuth } from '../../hooks/useAuth';
-
+import { Toaster, toaster } from "@/components/ui/toaster"
 
 export const Login: React.FC = memo(() => {
-        const { login, loading } = useAuth();
+        const { login, loading  } = useAuth();
         const[userId, setUsrId] = useState("");
         const onChangeUserId = (e: ChangeEvent<HTMLInputElement>) => setUsrId(e.target.value);
         const onClickLogin = () => login(userId);
@@ -17,7 +17,39 @@ export const Login: React.FC = memo(() => {
                                 <Separator variant="solid"   />
                                 <Stack py={4} px={10} gap="6"> {/* spacingが効かないのでgapで対応 marginY=""も使える */}
                                         <Input placeholder="ユーザーID" value={userId} onChange={onChangeUserId}  />
-                                        <PrimaryButton disabled={userId === ""} loading={loading} onClick={onClickLogin}>ログイン</PrimaryButton>
+                                        <Toaster />
+                                        <PrimaryButton
+                                                disabled={userId === ""}
+                                                loading={loading}
+                                                // onClick={onClickLogin}
+                                                // showToast={showToast}
+                                                onClick={() => {
+                                                        onClickLogin(); // ()をつけなければ、アラートがヒョじされる
+                                                        toaster.create({
+                                                                description: "File saved successfully1",
+                                                                type: "info",
+                                                                duration: 5000,
+                                                        });
+                                                }}
+                                        >
+                                                        ログイン
+                                        </PrimaryButton>
+
+                                        <PrimaryButton 
+                                                disabled={userId === ""} 
+                                                loading={loading} 
+                                                onClick={() => {
+                                                        onClickLogin; // ()をつけなければ、アラートがヒョじされる
+                                                        toaster.create({
+                                                                description: "File saved successfully2",
+                                                                type: "info",
+                                                                duration: 5000,
+                                                        });
+                                                }}
+                                        >
+                                                ログイン2
+                                        </PrimaryButton>
+
                                 </Stack>
                         </Box>
                 </Flex>
