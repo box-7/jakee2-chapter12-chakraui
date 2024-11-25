@@ -20,8 +20,11 @@ const App = () => {
                                         position="absolute"
                                         top="0"
                                         left="0"
-                                        width="100vw"
-                                        height="100vh"
+                                        // width="100vw"
+                                        width="auto"
+                                        // height="100vh"
+                                        // height="auto"
+                                        minHeight="100vh"
                                         color="gray.400"
                                 >
                                         {/* Toasterを設置 */}

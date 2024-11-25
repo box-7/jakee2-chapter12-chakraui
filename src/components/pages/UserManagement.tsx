@@ -1,18 +1,36 @@
-import { memo } from 'react';
-import { HStack, Flex, Box, Stack, Image,Text } from '@chakra-ui/react';
+import { memo, useEffect } from 'react';
+import { HStack, Flex, Box, Stack, Image,Text, Spinner, Center } from '@chakra-ui/react';
 import { UserCard } from '../organisms/user/UserCard';
+import { useAllUsers } from '../../hooks/useAllUsers';
+
 
 export const UserManagement: React.FC = memo(() => {
+        const { getUsers, loading, users } = useAllUsers();
+
+        useEffect(() => getUsers(), []);
+
         return (
-                <HStack wrap="wrap" p={{ base: 4, md: 10 }}>
-                        <Flex align="flex-start">
-                                <UserCard
-                                        imageUrl="https://picsum.photos/200"
-                                        userName="とり"
-                                        fullName="たい"
-                                />
-                        </Flex>
-                </HStack>
+                <>
+                        {loading ? (
+                                <Center h="100vh">
+                                        <Spinner />
+                                </Center>)
+                                : (
+                                        <HStack wrap="wrap" p={{ base: 4, md: 10 }}>
+                                                {users.map((user) => (
+                                                        <Flex key={user.id} align="flex-start" mx="auto">
+                                                                <UserCard
+                                                                        imageUrl="https://picsum.photos/200"
+                                                                        // imageUrl="https://source.unsplash.com/random"
+                                                                        userName={user.username}
+                                                                        fullName={user.name}
+                                                                />
+                                                        </Flex>
+                                                ))}
+                                        </HStack>
+                                )
+                        }
+                </>
 
         )
 });
