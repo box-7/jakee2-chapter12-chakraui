@@ -17,7 +17,7 @@ export const Login: React.FC = memo(() => {
                                 <Separator variant="solid"   />
                                 <Stack py={4} px={10} gap="6"> {/* spacingが効かないのでgapで対応 marginY=""も使える */}
                                         <Input placeholder="ユーザーID" value={userId} onChange={onChangeUserId}  />
-                                        <Toaster />
+                                        {/* <Toaster /> */}
                                         <PrimaryButton
                                                 disabled={userId === ""}
                                                 loading={loading}
