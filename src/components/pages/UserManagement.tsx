@@ -2,10 +2,14 @@ import { memo, useEffect } from 'react';
 import { HStack, Flex, Spinner, Center } from '@chakra-ui/react';
 import { useAllUsers } from '../../hooks/useAllUsers';
 import { UserDetailModal } from '../organisms/user/UserDetailModal';
+// import { useLoginUser } from '@/hooks/useLoginUser';
 
 export const UserManagement: React.FC = memo(() => {
         const { getUsers, loading, users } = useAllUsers();
         useEffect(() => getUsers(), []);
+        // const { loginUser } = useLoginUser();
+        // console.log("loginUser", loginUser);
+
         return (
                 <>
                         {loading ? (
@@ -31,7 +35,6 @@ export const UserManagement: React.FC = memo(() => {
                                 )
                         }
                 </>
-
         )
 });
 

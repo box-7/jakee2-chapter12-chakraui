@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 // import { toaster } from "@/components/ui/toaster";
 // import { Toast } from "./useMessage";
 import { useToast } from './useMessage';
+import { useLoginUser } from "./useLoginUser";
 
 export const useAuth = () => {
         const navigate = useNavigate();
         const [loading, setLoading] = useState(false);
         const { Toast } = useToast();
+        const { setLoginUser } = useLoginUser();
 
         const login = useCallback((id: string) => {
                 setLoading(true);
@@ -17,6 +19,8 @@ export const useAuth = () => {
                         .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
                         .then((res) => {
                                 if (res.data) {
+                                        const isAdmin = res.data.id === 10 ? true : false;
+                                        setLoginUser({...res.data, isAdmin});
                                         // toaster.create({
                                         //         description: "ログインしました",
                                         //         type: "success",

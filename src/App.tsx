@@ -4,6 +4,8 @@ import { Box } from "@chakra-ui/react"
 import { Router } from "./router/Router"
 import { RouterProvider } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster"
+// import { Login } from "./components/pages/Login";
+import { LoginUserProvider } from "./providers/LoginUserProvider";
 // 単一の主要なエクスポートがある場合はexport defaultを使う → import {} 不要
 // 複数のエクスポートがある場合はexportを使う→ import {} 必要
 
@@ -14,25 +16,26 @@ import { Toaster } from "@/components/ui/toaster"
 const App = () => {
         return (
                 <>
-                        <Provider>
-                                <Box
-                                        bg="gray.100"
-                                        position="absolute"
-                                        top="0"
-                                        left="0"
-                                        width="100vw"
-                                        // width="auto"
-                                        // height="100vh"
-                                        // height="auto"
-                                        minHeight="100vh"
-                                        color="gray.400"
-                                >
-                                        {/* Toasterを設置 */}
-                                        <Toaster />
-                                        <RouterProvider router={Router} />
-                                </Box>
-                        </Provider>
-
+                        <LoginUserProvider>
+                                <Provider>
+                                        <Box
+                                                bg="gray.100"
+                                                position="absolute"
+                                                top="0"
+                                                left="0"
+                                                width="100vw"
+                                                // width="auto"
+                                                // height="100vh"
+                                                // height="auto"
+                                                minHeight="100vh"
+                                                color="gray.400"
+                                        >
+                                                {/* Toasterを設置 */}
+                                                <Toaster />
+                                                <RouterProvider router={Router} />
+                                        </Box>
+                                </Provider>
+                        </LoginUserProvider>
                 </>
         )
 };
