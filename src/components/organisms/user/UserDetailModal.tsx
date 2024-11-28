@@ -4,6 +4,7 @@ import { useState } from "react";
 import { UserCard } from './UserCard';
 import { Field } from "@/components/ui/field"
 import { useRef } from "react"
+import { useLoginUser } from "../../../hooks/useLoginUser";
 
 import {
         DialogRoot,
@@ -30,6 +31,36 @@ export const UserDetailModal: React.FC<Props> = memo((props) => {
         // console.log("id", id)
         const [open, setOpen] = useState(false);
         const ref = useRef<HTMLInputElement>(null)
+        const { loginUser } = useLoginUser();
+
+        // Initialize state
+        const [nameState, setName] = useState(userName);
+        const [fullNameState, setFullName] = useState(fullName);
+        const [emailState, setEmail] = useState(email);
+        const [phoneState, setPhone] = useState(phone);
+
+        // Handle input changes
+        const handleNameChange = (e) => setName(e.target.value);
+        const handleFullNameChange = (e) => setFullName(e.target.value);
+        const handleEmailChange = (e) => setEmail(e.target.value);
+        const handlePhoneChange = (e) => setPhone(e.target.value);
+
+        // Handle save action
+        const handleSave = () => {
+                // Process the updated information
+                const updatedUser = {
+                        id,
+                        imageUrl,
+                        userName: nameState,
+                        fullName: fullNameState,
+                        email: emailState,
+                        phone: phoneState,
+                };
+                console.log('Updated User:', updatedUser);
+                alert(updatedUser.userName + 'の情報を保存しました');
+                // Add your save logic here (e.g., API call)
+        };
+
         return (
                 <>
                         <DialogRoot
@@ -63,21 +94,51 @@ export const UserDetailModal: React.FC<Props> = memo((props) => {
                                         </Button>
                                         <DialogBody mx="4">
                                                 <Stack gap="4">
-                                                        <Field label="名前">
-                                                        {/* <Input value={userName}  ref={ref}  />/ */}
-                                                                <Input placeholder={userName}  />
-                                                        </Field>
-                                                        <Field label="フルネーム">
-                                                                <Input placeholder={fullName} />
-                                                        </Field>
-                                                        <Field label="MAIL">
-                                                                <Input placeholder={email} />
-                                                        </Field>
-                                                        <Field label="TEL">
-                                                                <Input placeholder={phone} />
-                                                        </Field>
+                                                        {loginUser.isAdmin ?(
+                                                                <>
+                                                                        <Field label="名前">
+                                                                                <Input placeholder={userName}  onChange={handleNameChange} />
+                                                                        </Field>
+                                                                        <Field label="フルネーム">
+                                                                                <Input placeholder={fullName} onChange={handleFullNameChange} />
+                                                                        </Field>
+                                                                        <Field label="MAIL">
+                                                                                <Input placeholder={email} onChange={handleEmailChange} />
+                                                                        </Field>
+                                                                        <Field label="TEL">
+                                                                                <Input placeholder={phone} onChange={handlePhoneChange} />
+                                                                        </Field>
+                                                                </>
+                                                                ):(
+                                                                        <>
+                                                                                <Field label="名前">
+                                                                                        <Input placeholder={userName}  readOnly />
+                                                                                </Field>
+                                                                                <Field label="フルネーム">
+                                                                                        <Input placeholder={fullName} readOnly />
+                                                                                </Field>
+                                                                                <Field label="MAIL">
+                                                                                        <Input placeholder={email} readOnly />
+                                                                                </Field>
+                                                                                <Field label="TEL">
+                                                                                        <Input placeholder={phone} readOnly />
+                                                                                </Field>
+                                                                        </>
+                                                                )
+                                                        }
                                                 </Stack>
                                         </DialogBody>
+
+                                        {loginUser.isAdmin ?(
+                                                        <DialogFooter>
+                                                                <DialogActionTrigger asChild>
+                                                                        <Button variant="outline">Cancel</Button>
+                                                                </DialogActionTrigger>
+                                                                <Button colorPalette="green" onClick={handleSave}>Update</Button>
+                                                        </DialogFooter>
+                                                )
+                                                : null
+                                        }
                                 </DialogContent>
                         </DialogRoot >
                 </>
