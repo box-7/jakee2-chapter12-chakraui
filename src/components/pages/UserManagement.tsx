@@ -1,21 +1,11 @@
 import { memo, useEffect, useState } from 'react';
 import { HStack, Flex, Box, Stack, Image,Text, Spinner, Center } from '@chakra-ui/react';
-import { UserCard } from '../organisms/user/UserCard';
 import { useAllUsers } from '../../hooks/useAllUsers';
-// import { useCallback } from 'react';
 import { UserDetailModal } from '../organisms/user/UserDetailModal';
 
 export const UserManagement: React.FC = memo(() => {
         const { getUsers, loading, users } = useAllUsers();
         useEffect(() => getUsers(), []);
-        // const onClickUser = useCallback(() => onOpen(), []);
-        const [selectedUser, setSelectedUser] = useState(null);
-        const [open, setOpen] = useState(false);
-        // const handleOpenModal = (user) => {
-        //         setSelectedUser(user);
-        //         setOpen(true);
-        // };
-
         return (
                 <>
                         {loading ? (
@@ -26,34 +16,16 @@ export const UserManagement: React.FC = memo(() => {
                                         <HStack wrap="wrap" p={{ base: 4, md: 10 }}>
                                                 {users.map((user) => (
                                                         <Flex key={user.id} align="flex-start" mx="auto">
-                                                                {/* <UserDetailModal
-                                                                        // imageUrl="https://picsum.photos/200"
-                                                                        // imageUrl="https://source.unsplash.com/random"
+                                                                <UserDetailModal
+                                                                        imageUrl="https://picsum.photos/200"
                                                                         userName={user.username}
                                                                         fullName={user.name}
-                                                                > */}
-                                                                        <UserCard
-                                                                                imageUrl="https://picsum.photos/200"
-                                                                                // imageUrl="https://source.unsplash.com/random"
-                                                                                userName={user.username}
-                                                                                fullName={user.name}
-                                                                                // onClick={onClickUser}
-                                                                                // onClick={() => handleOpenModal(user)}
-                                                                        />
-                                                                {/* </UserDetailModal> */}
+                                                                />
                                                         </Flex>
                                                 ))}
                                         </HStack>
                                 )
                         }
-                        {/* {selectedUser && (
-                                <UserDetailModal
-                                        open={open}
-                                        setOpen={setOpen}
-                                        userName={selectedUser.username}
-                                        fullName={selectedUser.name}
-                                />
-                        )} */}
                 </>
 
         )
