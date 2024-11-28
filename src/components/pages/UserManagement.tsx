@@ -1,5 +1,5 @@
-import { memo, useEffect, useState } from 'react';
-import { HStack, Flex, Box, Stack, Image,Text, Spinner, Center } from '@chakra-ui/react';
+import { memo, useEffect } from 'react';
+import { HStack, Flex, Spinner, Center } from '@chakra-ui/react';
 import { useAllUsers } from '../../hooks/useAllUsers';
 import { UserDetailModal } from '../organisms/user/UserDetailModal';
 
@@ -15,11 +15,15 @@ export const UserManagement: React.FC = memo(() => {
                                 : (
                                         <HStack wrap="wrap" p={{ base: 4, md: 10 }}>
                                                 {users.map((user) => (
+                                                        // console.log("user", user),
                                                         <Flex key={user.id} align="flex-start" mx="auto">
                                                                 <UserDetailModal
+                                                                        id={user.id}
                                                                         imageUrl="https://picsum.photos/200"
                                                                         userName={user.username}
                                                                         fullName={user.name}
+                                                                        email={user.email}
+                                                                        phone={user.phone}
                                                                 />
                                                         </Flex>
                                                 ))}

@@ -17,13 +17,17 @@ import {
 } from "@/components/ui/dialog"
 
 type Props = {
+        id: number;
         imageUrl: string;
         userName: string;
         fullName: string;
+        email: string;
+        phone: string;
 };
 
 export const UserDetailModal: React.FC<Props> = memo((props) => {
-        const { imageUrl, userName, fullName } = props;
+        const { id, imageUrl, userName, fullName, email, phone } = props;
+        // console.log("id", id)
         const [open, setOpen] = useState(false);
         const ref = useRef<HTMLInputElement>(null)
         return (
@@ -60,16 +64,17 @@ export const UserDetailModal: React.FC<Props> = memo((props) => {
                                         <DialogBody mx="4">
                                                 <Stack gap="4">
                                                         <Field label="名前">
+                                                        {/* <Input value={userName}  ref={ref}  />/ */}
                                                                 <Input placeholder={userName}  />
                                                         </Field>
                                                         <Field label="フルネーム">
                                                                 <Input placeholder={fullName} />
                                                         </Field>
                                                         <Field label="MAIL">
-                                                                <Input ref={ref} placeholder="12345@example.com" />
+                                                                <Input placeholder={email} />
                                                         </Field>
                                                         <Field label="TEL">
-                                                                <Input placeholder="090-1111-2222" />
+                                                                <Input placeholder={phone} />
                                                         </Field>
                                                 </Stack>
                                         </DialogBody>
