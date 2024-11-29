@@ -94,7 +94,7 @@ export const UserDetailModal: React.FC<Props> = memo((props) => {
                                         </Button>
                                         <DialogBody mx="4">
                                                 <Stack gap="4">
-                                                        {loginUser.isAdmin ?(
+                                                        {loginUser && loginUser.isAdmin ?(
                                                                 <>
                                                                         <Field label="名前">
                                                                                 <Input placeholder={userName}  onChange={handleNameChange} />
@@ -129,7 +129,7 @@ export const UserDetailModal: React.FC<Props> = memo((props) => {
                                                 </Stack>
                                         </DialogBody>
 
-                                        {loginUser.isAdmin ?(
+                                        {loginUser && loginUser.isAdmin ?(
                                                         <DialogFooter>
                                                                 <DialogActionTrigger asChild>
                                                                         <Button variant="outline">Cancel</Button>
